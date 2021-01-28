@@ -36,23 +36,28 @@ const Filters = styled.div`
 `;
 
 const EmployeeList = styled.div`
-  background: white;
-  width: 600px;
-  border: 2px solid palevioletred;
-  margin: 0 auto;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-`
+    background: white;
+    width: 600px;
+    border: 2px solid palevioletred;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+
+`;
 
 
 const Employee = styled.div`
-  background: white;
-  border: 1px solid grey;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-`
+    background: white;
+    border: 1px solid grey;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    ul {
+        margin: 0;
+        padding: 10px;
+    }
+`;
 
 class App extends React.Component {
     constructor(props) {
@@ -71,6 +76,14 @@ class App extends React.Component {
         }
         if(event.target.id === 'filterAge'){
             this.setState({age: event.target.value});
+
+            //can only accept numbers
+        }
+
+        if(event.target.id === 'filterDepartments'){
+            this.setState({age: event.target.value});
+
+            //can only accept numbers
         }
     }
 
@@ -89,7 +102,7 @@ class App extends React.Component {
     render() {
         const departments = [ ...new Set(this.props.employee_data.employee_data.map(employee => employee.department)) ];
 
-     
+
 
       return (
         <AppWrapper>
@@ -99,10 +112,10 @@ class App extends React.Component {
                 <input id="searchInput" type="text" placeholder="Search by Name..." onChange={this.handleChange} value={this.state.search}></input>
                 
                 <label for="age">Age: 
-                    <input id="filterAge" type="text" placeholder="#" onChange={this.handleChange} value={this.state.age}></input>
+                    <input id="filterAge" type="number" placeholder="#" onChange={this.handleChange} value={this.state.age}></input>
                 </label>
                 <label for="departments">Dept: 
-                    <select name="departments" id="departments">
+                    <select name="departments" id="filterDepartments" onChange={this.handleChange}>
                         <option value="all">View All</option>
                         {departments.map(dept => (<option value={dept}>{dept}</option>))}
                     </select>
