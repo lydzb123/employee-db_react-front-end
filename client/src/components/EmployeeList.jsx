@@ -31,7 +31,9 @@ class EmployeeList extends React.Component {
     render() {
         return(
             <EmployeeListWrapper>
-                {this.props.employees.map((employee, index) => (
+                {this.props.employees.length === 0 ?
+                <Employee><ul>There are no matching records found.</ul></Employee> :
+                this.props.employees.map((employee, index) => (
                     <Employee key={index}>
                         <ul>{employee.name}, {employee.age}</ul>
                         <ul>{employee.department}</ul>
