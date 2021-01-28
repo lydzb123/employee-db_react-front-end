@@ -8,6 +8,7 @@ A React app that:
 + Allows a user to filter the data by both department and age
 + Allows a user to clear all selected filters
 
+![App Screenshot](https://i.imgur.com/TmmfdFf.png)
 ## Dependencies & Versioning:
 
 > Node v10.23.0
