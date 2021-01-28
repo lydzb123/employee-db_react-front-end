@@ -1,0 +1,39 @@
+{
+  "name": "prescreening-eval_employee-data-react-app",
+  "version": "1.0.0",
+  "description": "Prescreening Evaluation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "react-dev": "webpack -w",
+    "start": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lydzb123/prescreening-eval_employee-data-react-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lydzb123/prescreening-eval_employee-data-react-app/issues"
+  },
+  "homepage": "https://github.com/lydzb123/prescreening-eval_employee-data-react-app#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "package": "^1.0.1",
+    "path": "^0.12.7",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.1",
+    "babel-loader": "^8.1.0",
+    "webpack": "^5.3.2",
+    "webpack-cli": "^4.1.0"
+  }
+
+
+}
