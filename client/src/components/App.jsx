@@ -65,23 +65,27 @@ class App extends React.Component {
         this.state = {
             search: "",
             department: "",
-            age: ""
+            age: null
         }
         this.handleChange = this.handleChange.bind(this);
+        this.searchBy = this.searchBy.bind(this);
+
     }
 
     handleChange(event) {
         if(event.target.id === 'searchInput'){
             this.setState({search: event.target.value});
+        console.log('name done')
+
         }
         if(event.target.id === 'filterAge'){
             this.setState({age: event.target.value});
-
-            //can only accept numbers
+console.log('age done')
         }
 
         if(event.target.id === 'filterDepartments'){
-            this.setState({age: event.target.value});
+            this.setState({department: event.target.value});
+            console.log('dept done')
 
             //can only accept numbers
         }
@@ -91,12 +95,18 @@ class App extends React.Component {
         //get all employee data
     }
 
+
+    searchBy(name, age, department) {
+        // console.log('change detected', name, age, department);
+return
+    }
+
     componentDidUpdate(prevProps, prevState) {
         if(this.state.search !== prevState.search ||
             this.state.age !== prevState.search ||
             this.state.department !== prevState.search) {
-                console.log('change detected');
-            }
+                this.searchBy(this.state.search, this.state.age, this.state.department);
+        }
     }
 
     render() {
@@ -112,12 +122,13 @@ class App extends React.Component {
                 <input id="searchInput" type="text" placeholder="Search by Name..." onChange={this.handleChange} value={this.state.search}></input>
                 
                 <label for="age">Age: 
-                    <input id="filterAge" type="number" placeholder="#" onChange={this.handleChange} value={this.state.age}></input>
+                    <input id="filterAge" type="number" placeholder="0" min="0" onChange={this.handleChange} value={this.state.age}></input>
                 </label>
+                
                 <label for="departments">Dept: 
                     <select name="departments" id="filterDepartments" onChange={this.handleChange}>
                         <option value="all">View All</option>
-                        {departments.map(dept => (<option value={dept}>{dept}</option>))}
+                        {departments.map((dept, i) => (<option key={i} value={dept}>{dept}</option>))}
                     </select>
                 </label>
             </Filters>
