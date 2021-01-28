@@ -1,12 +1,12 @@
 import React,{Component} from 'react';
 import styled from 'styled-components';
+import EmployeeList from './EmployeeList.jsx';
 
 
 
 const AppWrapper = styled.div`
     width: 100%;
     margin: 0 auto;
-    border: 1px solid grey;
     height: auto;
     font-family: sans-serif;
     h1{
@@ -19,7 +19,7 @@ const Filters = styled.div`
     justify-content: space-between;
     margin: 0 auto;
     padding: 12px;
-    width: 580px;
+    width: 600px;
     font-family: 10px;
     background: #3e3e3e;
     color: #fff;
@@ -32,30 +32,6 @@ const Filters = styled.div`
 
     #filterAge {
         width: 40px;
-    }
-`;
-
-const EmployeeList = styled.div`
-    background: white;
-    width: 600px;
-    border: 2px solid palevioletred;
-    margin: 0 auto;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-
-`;
-
-
-const Employee = styled.div`
-    background: white;
-    border: 1px solid grey;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    ul {
-        margin: 0;
-        padding: 10px;
     }
 `;
 
@@ -86,9 +62,9 @@ class App extends React.Component {
         }
     }
 
-    componentDidMount(){
-        //get all employee data
-    }
+    // componentDidMount(){
+    //     //get all employee data
+    // }
 
 
     searchBy(name, age, department) {
@@ -127,15 +103,7 @@ return
                     </select>
                 </label>
             </Filters>
-
-            <EmployeeList>
-                {this.state.filteredEmployees.map((employee, index) => (
-                    <Employee key={index}>
-                    <ul>{employee.name}, {employee.age}</ul>
-                    <ul>{employee.department}</ul>
-                    </Employee>
-                ))}
-            </EmployeeList>
+            <EmployeeList employees={this.state.filteredEmployees}></EmployeeList>
 
         </AppWrapper>
       )
