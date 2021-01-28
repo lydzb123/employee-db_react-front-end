@@ -56,7 +56,6 @@ class App extends React.Component {
     }
 
     handleChange(event) {
-        
         var state = this.state;
         state[event.target.id] = event.target.value;
         state.filteredEmployees = this.props.employee_data.employee_data;
@@ -83,14 +82,14 @@ class App extends React.Component {
         this.setState({state});
     }
 
-handleReset() {
-    this.setState({
-        search: "",
-        department: "All",
-        age: 0,
-        filteredEmployees: this.props.employee_data.employee_data
-    });
-}
+    handleReset() {
+        this.setState({
+            search: "",
+            department: "All",
+            age: 0,
+            filteredEmployees: this.props.employee_data.employee_data
+        });
+    }
 
     render() {
         const departments = [ ...new Set(this.props.employee_data.employee_data.map(employee => employee.department)) ];

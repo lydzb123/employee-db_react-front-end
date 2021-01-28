@@ -35,8 +35,9 @@ class EmployeeList extends React.Component {
                 <Employee><ul>There are no matching records found.</ul></Employee> :
                 this.props.employees.map((employee, index) => (
                     <Employee key={index}>
-                        <ul>{employee.name}, {employee.age}</ul>
+                        <ul><strong>{employee.name}</strong>, {employee.age}</ul>
                         <ul>{employee.department}</ul>
+                        {/* idea for later: implement on click filter for department and age text */}
                     </Employee>
                 ))}
             </EmployeeListWrapper>
