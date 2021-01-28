@@ -26,17 +26,15 @@ const Employee = styled.div`
 class EmployeeList extends React.Component {
     constructor(props){
         super(props);
-        this.state = {
-            employees: this.props.employees
-        }
     }
+
     render() {
         return(
             <EmployeeListWrapper>
-                {this.state.employees.map((employee, index) => (
+                {this.props.employees.map((employee, index) => (
                     <Employee key={index}>
-                    <ul>{employee.name}, {employee.age}</ul>
-                    <ul>{employee.department}</ul>
+                        <ul>{employee.name}, {employee.age}</ul>
+                        <ul>{employee.department}</ul>
                     </Employee>
                 ))}
             </EmployeeListWrapper>

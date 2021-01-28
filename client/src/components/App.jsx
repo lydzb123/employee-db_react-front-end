@@ -47,7 +47,7 @@ class App extends React.Component {
     }
 
     handleChange(event) {
-
+        
         var state = this.state;
         state[event.target.id] = event.target.value;
         state.filteredEmployees = this.props.employee_data.employee_data;
@@ -74,10 +74,9 @@ class App extends React.Component {
                     return employee.age == state.age
                 });
             }
-
         this.setState({state});
     }
-    
+
 
     render() {
         const departments = [ ...new Set(this.props.employee_data.employee_data.map(employee => employee.department)) ];
@@ -86,7 +85,7 @@ class App extends React.Component {
 
       return (
         <AppWrapper>
-            <h1>Employee Hub</h1>
+            <h1>Employee DB</h1>
 
             <Filters>
                 <input id="search" type="text" placeholder="Search by Name..." onChange={this.handleChange} value={this.state.search}></input>
@@ -104,7 +103,6 @@ class App extends React.Component {
             </Filters>
             <EmployeeList employees={this.state.filteredEmployees}></EmployeeList>
             
-
         </AppWrapper>
       )
     
