@@ -1,4 +1,6 @@
-var employee_data = [
+
+module.exports = {
+  employee_data: [
     {
       name: "Beyonce Knowles",
       department: "Music",
@@ -34,5 +36,6 @@ var employee_data = [
       department: "Sports",
       age: 39,
     },
-  ];
-  
+  ]
+
+}

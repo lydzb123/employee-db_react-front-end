@@ -1,1 +1,4 @@
 node_modules
+.bundle
+package-lock.json
+notes.js
