@@ -32,6 +32,13 @@ const Filters = styled.div`
     #age {
         width: 40px;
     }
+
+    a {
+        margin: -4px;
+        padding: 0;
+    }
+
+
 `;
 
 class App extends React.Component {
@@ -44,6 +51,8 @@ class App extends React.Component {
             filteredEmployees: this.props.employee_data.employee_data
         }
         this.handleChange = this.handleChange.bind(this);
+        this.handleReset = this.handleReset.bind(this);
+        
     }
 
     handleChange(event) {
@@ -56,14 +65,11 @@ class App extends React.Component {
                 state.filteredEmployees = this.props.employee_data.employee_data
             } else {
                 state.filteredEmployees =  this.props.employee_data.employee_data.filter(employee => {
-                    console.log('1, state: ', state);
                     return employee.department === state.department;
                 });
             }
 
             if(state.search !== "") {
-                console.log('here', state);
-
                 state.filteredEmployees = state.filteredEmployees.filter(employee => {
                     return employee.name.toLowerCase().includes(state.search.toLowerCase())
                 });
@@ -77,6 +83,14 @@ class App extends React.Component {
         this.setState({state});
     }
 
+handleReset() {
+    this.setState({
+        search: "",
+        department: "All",
+        age: 0,
+        filteredEmployees: this.props.employee_data.employee_data
+    });
+}
 
     render() {
         const departments = [ ...new Set(this.props.employee_data.employee_data.map(employee => employee.department)) ];
@@ -95,19 +109,18 @@ class App extends React.Component {
                 </label>
                 
                 <label htmlFor="departments">Dept: 
-                    <select name="departments" id="department" onChange={this.handleChange}>
+                    <select name="departments" id="department" value={this.state.department} onChange={this.handleChange}>
                         <option value="all">View All</option>
                         {departments.map((dept, i) => (<option key={i} value={dept}>{dept}</option>))}
                     </select>
                 </label>
+                <a onClick={this.handleReset} style={{cursor: 'pointer'}}>🔄 </a>
             </Filters>
             <EmployeeList employees={this.state.filteredEmployees}></EmployeeList>
             
         </AppWrapper>
-      )
-    
-      ;
-    }
+      );
+    };
 }
 
 export default App
