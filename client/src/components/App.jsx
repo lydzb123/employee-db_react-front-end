@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Component} from 'react';
 import styled from 'styled-components';
 
 
@@ -64,8 +64,9 @@ class App extends React.Component {
         super(props);
         this.state = {
             search: "",
-            department: "",
-            age: null
+            department: "All",
+            age: 0,
+            filteredEmployees: this.props.employee_data.employee_data
         }
         this.handleChange = this.handleChange.bind(this);
         this.searchBy = this.searchBy.bind(this);
@@ -75,19 +76,13 @@ class App extends React.Component {
     handleChange(event) {
         if(event.target.id === 'searchInput'){
             this.setState({search: event.target.value});
-        console.log('name done')
-
         }
         if(event.target.id === 'filterAge'){
             this.setState({age: event.target.value});
-console.log('age done')
         }
 
         if(event.target.id === 'filterDepartments'){
             this.setState({department: event.target.value});
-            console.log('dept done')
-
-            //can only accept numbers
         }
     }
 
@@ -121,11 +116,11 @@ return
             <Filters>
                 <input id="searchInput" type="text" placeholder="Search by Name..." onChange={this.handleChange} value={this.state.search}></input>
                 
-                <label for="age">Age: 
+                <label htmlFor="age">Age: 
                     <input id="filterAge" type="number" placeholder="0" min="0" onChange={this.handleChange} value={this.state.age}></input>
                 </label>
                 
-                <label for="departments">Dept: 
+                <label htmlFor="departments">Dept: 
                     <select name="departments" id="filterDepartments" onChange={this.handleChange}>
                         <option value="all">View All</option>
                         {departments.map((dept, i) => (<option key={i} value={dept}>{dept}</option>))}
@@ -134,8 +129,8 @@ return
             </Filters>
 
             <EmployeeList>
-                {this.props.employee_data.employee_data.map(employee => (
-                    <Employee>
+                {this.state.filteredEmployees.map((employee, index) => (
+                    <Employee key={index}>
                     <ul>{employee.name}, {employee.age}</ul>
                     <ul>{employee.department}</ul>
                     </Employee>
